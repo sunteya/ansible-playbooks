@@ -1,0 +1,3 @@
+env:
+  http_proxy: "{{ proxy | default() }}"
+  https_proxy: "{{ proxy | default() }}"

@@ -1,0 +1,15 @@
+- hosts: all
+  vars_files:
+    - vars.yml
+
+  roles:
+    - linuxbrew
+
+  pre_tasks:
+    - apt: name={{item}} state=latest
+      environment: "{{ env | default({}) }}"
+      with_items:
+        - htop
+        - tmux
+        - iftop
+        - finger
