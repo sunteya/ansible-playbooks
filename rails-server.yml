@@ -1,8 +1,10 @@
 - hosts: all
   vars:
     ruby_version: 2.1.2
+    node_version: v0.10.29
   vars_files:
     - vars.yml
   roles:
+    - nodejs
     - ruby
     - nginx-passenger
