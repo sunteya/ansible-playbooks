@@ -1,8 +1,19 @@
 - hosts: all
   vars:
-    docker_compose_version: 1.2.0rc3
+    docker_compose_version: 1.2.0
     docker_volumes_version: 1.1.1
+
   vars_files:
     - vars.yml
+
   roles:
     - docker
+
+  pre_tasks:
+    - apt: name={{item}} state=latest
+      environment: "{{ env | default({}) }}"
+      with_items:
+        - htop
+        - tmux
+        - iftop
+        - curl
