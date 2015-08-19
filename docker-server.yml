@@ -1,7 +1,7 @@
 - hosts: all
   vars:
-    docker_compose_version: 1.2.0
-    docker_volumes_version: 1.1.1
+    docker_compose_version: 1.4.0
+    docker_volumes_version: 1.1.2
 
   vars_files:
     - vars.yml
