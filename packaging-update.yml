@@ -2,14 +2,14 @@
   vars_files:
     - vars.yml
   tasks:
-    - apt: update_cache=yes
+    - apt: update_cache=yes upgrade=dist
       environment: "{{ env | default({}) }}"
 
     - shell: "which brew > /dev/null && echo found || echo not found"
       register: test_homebrew
       changed_when: false
 
-    - homebrew: update_homebrew=yes
+    - homebrew: update_homebrew=yes upgrade_all=yes
       when: test_homebrew.stdout == "found"
       environment: "{{ env | default({}) }}"
 
