@@ -6,10 +6,23 @@
     - linuxbrew
 
   pre_tasks:
-    - apt: name={{item}} state=latest
+    - apt:
+        name:
+          - htop
+          - tmux
+          - iftop
+          - finger
       environment: "{{ env | default({}) }}"
-      with_items:
-        - htop
-        - tmux
-        - iftop
-        - finger
+
+  tasks:
+    - homebrew_tap:
+        name: cjbassi/gotop
+      become: true
+      become_user: linuxbrew
+      environment: "{{ env | default({}) }}"
+
+    - homebrew:
+        name: gotop
+      become: true
+      become_user: linuxbrew
+      environment: "{{ env | default({}) }}"

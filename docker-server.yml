@@ -1,7 +1,7 @@
 - hosts: all
-  vars:
-    docker_compose_version: 1.6.0
-    docker_volumes_version: 1.2
+  # vars:
+    # docker_compose_version: 1.6.0
+    # docker_volumes_version: 1.2
 
   vars_files:
     - vars.yml
@@ -10,10 +10,11 @@
     - docker
 
   pre_tasks:
-    - apt: name={{item}} state=latest
+    - apt:
+        name:
+          - htop
+          - tmux
+          - iftop
+          - curl
+          - vim
       environment: "{{ env | default({}) }}"
-      with_items:
-        - htop
-        - tmux
-        - iftop
-        - curl
